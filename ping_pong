@@ -55,19 +55,17 @@ speed_y = 3
 while game:
     for e in event.get():
         if e.type == QUIT:
-            game = False  # 🛑 End game if the window is closed
+            game = False  
 
     if not finish:
-        window.fill(back)               # 🧼 Clear the screen
-        racket1.update_l()             # ⬆⬇ Update left paddle
-        racket2.update_r()             # ⬆⬇ Update right paddle
+        window.fill(back)              
+        racket1.update_l()             
+        racket2.update_r()             
         ball.rect.x += speed_x
         ball.rect.y += speed_y
-
-        # 🔄 Bounce when the ball hits paddles
+       
         if sprite.collide_rect(racket1, ball) or sprite.collide_rect(racket2, ball):
             speed_x *= -1 
 
-        # 🔃 Bounce from top/bottom
         if ball.rect.y > win_height - 50 or ball.rect.y < 0:
             speed_y *= -1
